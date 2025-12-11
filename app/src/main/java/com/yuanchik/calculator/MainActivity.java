@@ -44,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         String number = editText.getText().toString();
+        if (number.equals("0") &&
+                view.getId() != R.id.buDot &&
+                view.getId() != R.id.buPlusMinus) {
+            number = "";
+        }
 
         if (view.getId() == R.id.bu0) {
             number = number + "0";
@@ -66,9 +71,16 @@ public class MainActivity extends AppCompatActivity {
         } else if (view.getId() == R.id.bu9) {
             number = number + "9";
         } else if (view.getId() == R.id.buDot) {
-            if (dotIsPresent(number)) {
-            } else {
-                number = number + ".";
+            if (!dotIsPresent(number)) {  // Если точки ещё нет
+                if (number.isEmpty() || number.equals("0") || number.equals("-0")) {
+                    if (number.startsWith("-")) {
+                        number = "-0.";
+                    } else {
+                        number = "0.";
+                    }
+                } else {
+                    number = number + ".";
+                }
             }
         } else if (view.getId() == R.id.buPlusMinus) {
             if (number.isEmpty() || number.equals("0")) {
@@ -179,10 +191,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public boolean dotIsPresent(String number) {
-        if (!number.contains(".")) {
-            return false;
-        } else {
-            return true;
-        }
+        return number.contains(".");
     }
 }
