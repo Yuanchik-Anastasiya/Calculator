@@ -13,6 +13,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    String operator;
+    String oldNumber;
+    boolean isNew = true;
     EditText editText;
 
     @Override
@@ -31,31 +34,52 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickNumber(View view) {
 
+        if (isNew)
+            editText.setText("");
+        isNew = false;
+
         String number = editText.getText().toString();
 
         if (view.getId() == R.id.bu0) {
             number = number + "0";
         } else if (view.getId() == R.id.bu1) {
             number = number + "1";
-        }else if (view.getId() == R.id.bu2) {
+        } else if (view.getId() == R.id.bu2) {
             number = number + "2";
-        }else if (view.getId() == R.id.bu3) {
+        } else if (view.getId() == R.id.bu3) {
             number = number + "3";
-        }else if (view.getId() == R.id.bu4) {
+        } else if (view.getId() == R.id.bu4) {
             number = number + "4";
-        }else if (view.getId() == R.id.bu5) {
+        } else if (view.getId() == R.id.bu5) {
             number = number + "5";
-        }else if (view.getId() == R.id.bu6) {
+        } else if (view.getId() == R.id.bu6) {
             number = number + "6";
-        }else if (view.getId() == R.id.bu7) {
+        } else if (view.getId() == R.id.bu7) {
             number = number + "7";
-        }else if (view.getId() == R.id.bu8) {
+        } else if (view.getId() == R.id.bu8) {
             number = number + "8";
-        }else if (view.getId() == R.id.bu9) {
+        } else if (view.getId() == R.id.bu9) {
             number = number + "9";
-        }else if (view.getId() == R.id.buAC){
-            number = "0";
+        } else if (view.getId() == R.id.buDot) {
+            number = number + ".";
+        } else if (view.getId() == R.id.buPlusMinus) {
+            number = "-" + number;
         }
         editText.setText(number);
+    }
+
+    public void operations(View view) {
+        isNew = true;
+        oldNumber = editText.getText().toString();
+
+        if (view.getId() == R.id.buPlus) {
+            operator = "+";
+        } else if (view.getId() == R.id.buMinus) {
+            operator = "-";
+        } else if (view.getId() == R.id.buMultiply) {
+            operator = "*";
+        } else if (view.getId() == R.id.buDivision) {
+            operator = "/";
+        }
     }
 }

@@ -33,7 +33,6 @@
 
             <Button
                 android:id="@+id/buAC"
-                android:onClick="clickNumber"
                 android:text="AC"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -46,6 +45,7 @@
                 />
             <Button
                 android:id="@+id/buPlusMinus"
+                android:onClick="clickNumber"
                 android:text="+/-"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -57,7 +57,8 @@
                 style="@style/MyCustomButton"
                 />
             <Button
-                android:id="@+id/buDevide"
+                android:id="@+id/buDivision"
+                android:onClick="operations"
                 android:text="/"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -70,6 +71,7 @@
                 />
             <Button
                 android:id="@+id/buMultiply"
+                android:onClick="operations"
                 android:text="*"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -185,6 +187,7 @@
                 />
             <Button
                 android:id="@+id/buPlus"
+                android:onClick="operations"
                 android:text="+"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -242,6 +245,7 @@
                 />
             <Button
                 android:id="@+id/buMinus"
+                android:onClick="operations"
                 android:text="-"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -280,6 +284,7 @@
                 />
             <Button
                 android:id="@+id/buDot"
+                android:onClick="clickNumber"
                 android:text="."
                 android:textColor="@color/black"
                 android:textStyle="bold"
