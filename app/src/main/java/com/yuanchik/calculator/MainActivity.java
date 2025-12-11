@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     String operator;
     String oldNumber;
+    private boolean isNewCalculation = true;
     boolean isNew = true;
     EditText editText;
 
@@ -36,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         if (isNew)
             editText.setText("");
         isNew = false;
+
+        if (isNewCalculation) {
+            editText.setText("");
+            isNewCalculation = false;
+        }
 
         String number = editText.getText().toString();
 
@@ -75,13 +81,18 @@ public class MainActivity extends AppCompatActivity {
             }
         } else if (view.getId() == R.id.buAC) {
             isNew = true;
+            isNewCalculation = true;
+            operator = "";
             number = "0";
         }
         editText.setText(number);
     }
 
     public void operations(View view) {
+
         isNew = true;
+        isNewCalculation = false;
+
         oldNumber = editText.getText().toString();
 
         if (view.getId() == R.id.buPlus) {
@@ -119,10 +130,56 @@ public class MainActivity extends AppCompatActivity {
         }
 
         editText.setText(result + "");
+        isNewCalculation = true;
+
     }
 
+    public void clickPercent(View view) {
+        try {
+            double currentValue = Double.parseDouble(editText.getText().toString());
+
+
+            if (operator != null && !operator.isEmpty()) {
+                double baseValue = Double.parseDouble(oldNumber);
+
+                switch (operator) {
+                    case "+":
+
+                        currentValue = baseValue + (baseValue * currentValue / 100);
+                        break;
+                    case "-":
+
+                        currentValue = baseValue - (baseValue * currentValue / 100);
+                        break;
+                    case "*":
+
+                        currentValue = baseValue * (currentValue / 100);
+                        break;
+                    case "/":
+
+                        if (currentValue == 0) {
+                            editText.setText("ERROR");
+                            return;
+                        }
+                        currentValue = baseValue / (currentValue / 100);
+                        break;
+                }
+            } else {
+
+                currentValue = currentValue / 100;
+            }
+
+            editText.setText(String.valueOf(currentValue));
+            isNewCalculation = true;
+
+        } catch (NumberFormatException e) {
+            editText.setText("ERROR");
+        }
+    }
+
+
     public boolean dotIsPresent(String number) {
-        if (!number.contains(".") && !number.contains("-")) {
+        if (!number.contains(".")) {
             return false;
         } else {
             return true;

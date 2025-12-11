@@ -133,6 +133,7 @@
                 />
             <Button
                 android:id="@+id/buPercent"
+                android:onClick="clickPercent"
                 android:text="%"
                 android:textColor="@color/black"
                 android:textStyle="bold"
