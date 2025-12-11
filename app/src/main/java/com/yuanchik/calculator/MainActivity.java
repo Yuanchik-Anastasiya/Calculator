@@ -1,6 +1,5 @@
 package com.yuanchik.calculator;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -61,9 +60,22 @@ public class MainActivity extends AppCompatActivity {
         } else if (view.getId() == R.id.bu9) {
             number = number + "9";
         } else if (view.getId() == R.id.buDot) {
-            number = number + ".";
+            if (dotIsPresent(number)) {
+            } else {
+                number = number + ".";
+            }
         } else if (view.getId() == R.id.buPlusMinus) {
-            number = "-" + number;
+            if (number.isEmpty() || number.equals("0")) {
+                isNew = true;
+                number = "0";
+            } else if (number.startsWith("-")) {
+                number = number.substring(1);
+            } else {
+                number = "-" + number;
+            }
+        } else if (view.getId() == R.id.buAC) {
+            isNew = true;
+            number = "0";
         }
         editText.setText(number);
     }
@@ -80,6 +92,40 @@ public class MainActivity extends AppCompatActivity {
             operator = "*";
         } else if (view.getId() == R.id.buDivision) {
             operator = "/";
+        }
+    }
+
+    public void clickEqual(View view) {
+        String newNumber = editText.getText().toString();
+        double result = 0.0;
+
+        switch (operator) {
+            case "+":
+                result = Double.parseDouble(oldNumber) + Double.parseDouble(newNumber);
+                break;
+            case "-":
+                result = Double.parseDouble(oldNumber) - Double.parseDouble(newNumber);
+                break;
+            case "*":
+                result = Double.parseDouble(oldNumber) * Double.parseDouble(newNumber);
+                break;
+            case "/":
+                if (Double.parseDouble(newNumber) == 0) {
+                    editText.setText("ERROR");
+                    return;
+                }
+                result = Double.parseDouble(oldNumber) / Double.parseDouble(newNumber);
+                break;
+        }
+
+        editText.setText(result + "");
+    }
+
+    public boolean dotIsPresent(String number) {
+        if (!number.contains(".") && !number.contains("-")) {
+            return false;
+        } else {
+            return true;
         }
     }
 }
