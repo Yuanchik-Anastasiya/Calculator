@@ -6,9 +6,9 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
     <style name="MyCustomButton" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/button</item>
-        <item name="cornerRadius">12dp</item>
-        <item name="strokeColor">#520000</item>
+        <item name="backgroundTint">#D404D9FF</item>
+        <item name="cornerRadius">18dp</item>
+        <item name="strokeColor">#7DF9FF</item>
         <item name="strokeWidth">5dp</item>
     </style>
 

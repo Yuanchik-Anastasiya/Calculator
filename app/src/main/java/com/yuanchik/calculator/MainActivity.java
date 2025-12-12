@@ -193,4 +193,28 @@ public class MainActivity extends AppCompatActivity {
     public boolean dotIsPresent(String number) {
         return number.contains(".");
     }
+
+    public void onBackspaceClick(View view) {
+        String currentText = editText.getText().toString();
+
+        // Если строка пустая или показывает "ERROR" — ничего не делаем
+        if (currentText.isEmpty() || currentText.equals("ERROR")) {
+            return;
+        }
+
+        // Если осталось только "0" или "-0" — не удаляем дальше
+        if (currentText.equals("0") || currentText.equals("-0")) {
+            return;
+        }
+
+        // Удаляем последний символ
+        String newText = currentText.substring(0, currentText.length() - 1);
+
+        // Если после удаления строка стала пустой — ставим "0"
+        if (newText.isEmpty()) {
+            editText.setText("0");
+        } else {
+            editText.setText(newText);
+        }
+    }
 }
