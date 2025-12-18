@@ -1,7 +1,9 @@
 package com.yuanchik.calculator;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.OvershootInterpolator;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
@@ -30,6 +32,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         editText = findViewById(R.id.editText);
+
+        int[] buttonIds = {
+                R.id.bu0, R.id.bu1, R.id.bu2, R.id.bu3, R.id.bu4,
+                R.id.bu5, R.id.bu6, R.id.bu7, R.id.bu8, R.id.bu9,
+                R.id.buDot, R.id.buPlusMinus, R.id.buAC,
+                R.id.buPlus, R.id.buMinus, R.id.buMultiply, R.id.buDivision,
+                R.id.buPercent, R.id.buEqual, R.id.buBackspace
+        };
+
+        for (int id : buttonIds) {
+            setupButtonAnimation(findViewById(id));
+        }
+
     }
 
     public void clickNumber(View view) {
@@ -97,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             operator = "";
             number = "0";
         }
+
         editText.setText(number);
     }
 
@@ -141,7 +157,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        editText.setText(result + "");
+        if (result == (long) result) {
+            editText.setText(String.valueOf((long) result));
+        } else {
+            editText.setText(String.valueOf(result));
+        }
+
         isNewCalculation = true;
 
     }
@@ -189,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public boolean dotIsPresent(String number) {
         return number.contains(".");
     }
@@ -217,4 +237,23 @@ public class MainActivity extends AppCompatActivity {
             editText.setText(newText);
         }
     }
+
+    private void setupButtonAnimation(View button) {
+        button.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(150).setInterpolator(new OvershootInterpolator(1.5f)).start();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(150).setInterpolator(new OvershootInterpolator(1.5f)).start();
+                        break;
+                }
+                return false;
+            }
+        });
+    }
+
 }

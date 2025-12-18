@@ -7,327 +7,241 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-
-    <EditText
-        android:id="@+id/editText"
-        android:textSize="38pt"
-        android:textStyle="bold"
-        android:textColor="#7DF9FF"
-        android:background="#B25555FF"
+    <!-- Область дисплея -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:paddingEnd="5dp"
-        android:inputType="textPersonName"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="right|center"
-        android:text="0" />
+        android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/editText"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:textColor="#7DF9FF"
+            android:background="#B25555FF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:paddingEnd="16dp"
+            android:gravity="right|bottom"
+            android:text="0"
+            android:importantForAutofill="no" />
+    </LinearLayout>
+
+    <!-- Разделительная линия -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#447DF9FF"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Клавиатура -->
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+        <!-- Строка 1: AC, ±, ÷, × -->
+        <TableRow>
             <Button
                 android:id="@+id/buAC"
                 android:onClick="clickNumber"
+                android:layout_margin="1dp"
                 android:text="AC"
                 android:textColor="#E2F80000"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/buPlusMinus"
                 android:onClick="clickNumber"
+                android:layout_margin="1dp"
                 android:text="±"
                 android:textColor="#E2F80000"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/buDivision"
                 android:onClick="operations"
+                android:layout_margin="1dp"
                 android:text="÷"
                 android:textColor="#E2F80000"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/buMultiply"
                 android:onClick="operations"
+                android:layout_margin="1dp"
                 android:text="×"
                 android:textColor="#E2F80000"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
-
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+        <!-- Строки 2–4: Цифры и операции -->
+        <TableRow>
             <Button
                 android:id="@+id/bu7"
                 android:onClick="clickNumber"
-                android:text="７"
-                android:textColor="@color/black"
+                android:layout_margin="1dp"
+                android:text="7"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/bu8"
                 android:onClick="clickNumber"
-                android:text="８"
-                android:textColor="@color/black"
+                android:layout_margin="1dp"
+                android:text="8"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/bu9"
                 android:onClick="clickNumber"
-                android:text="９"
-                android:textColor="@color/black"
+                android:layout_margin="1dp"
+                android:text="9"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/buPercent"
                 android:onClick="clickPercent"
-                android:text="％"
+                android:layout_margin="1dp"
+                android:text="%"
                 android:textColor="#E2F80000"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
-
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
         </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
+        <TableRow>
             <Button
                 android:id="@+id/bu4"
                 android:onClick="clickNumber"
-                android:text="４"
-                android:textColor="@color/black"
+                android:layout_margin="1dp"
+                android:text="4"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/bu5"
                 android:onClick="clickNumber"
-                android:text="５"
-                android:textColor="@color/black"
+                android:layout_margin="1dp"
+                android:text="5"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/bu6"
                 android:onClick="clickNumber"
-                android:text="６"
-                android:textColor="@color/black"
+                android:layout_margin="1dp"
+                android:text="6"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/buPlus"
                 android:onClick="operations"
-                android:text="✛"
+                android:layout_margin="1dp"
+                android:text="+"
                 android:textColor="#E2F80000"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
-
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
         </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
+        <TableRow>
             <Button
                 android:id="@+id/bu1"
                 android:onClick="clickNumber"
-                android:text="１"
-                android:textColor="@color/black"
+                android:layout_margin="1dp"
+                android:text="1"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/bu2"
                 android:onClick="clickNumber"
-                android:text="２"
-                android:textColor="@color/black"
+                android:layout_margin="1dp"
+                android:text="2"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/bu3"
                 android:onClick="clickNumber"
-                android:text="３"
-                android:textColor="@color/black"
+                android:layout_margin="1dp"
+                android:text="3"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/buMinus"
                 android:onClick="operations"
+                android:layout_margin="1dp"
                 android:text="-"
                 android:textColor="#E2F80000"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
-
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
         </TableRow>
-    </TableLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
+        <!-- Строка 5: 0, ., =, ← -->
+        <TableRow>
             <Button
                 android:id="@+id/bu0"
                 android:onClick="clickNumber"
-                android:text="０"
-                android:textColor="@color/black"
+                android:layout_margin="1dp"
+                android:text="0"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/buDot"
                 android:onClick="clickNumber"
+                android:layout_margin="1dp"
                 android:text="."
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/buEqual"
                 android:onClick="clickEqual"
+                android:layout_margin="1dp"
                 android:text="="
                 android:textColor="#E2F80000"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
             <Button
                 android:id="@+id/buBackspace"
                 android:onClick="onBackspaceClick"
-                android:text="➩"
+                android:layout_margin="1dp"
+                android:text="←"
                 android:textColor="#E2F80000"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:height="30pt"
-                android:width="30pt"
-                android:layout_weight="1"
-                android:layout_marginRight="1pt"
-                style="@style/MyCustomButton"
-                />
-
+                android:textSize="24sp"
+                style="@style/MyCustomButton" />
         </TableRow>
-    </LinearLayout>
-
-
+    </TableLayout>
 </LinearLayout>
