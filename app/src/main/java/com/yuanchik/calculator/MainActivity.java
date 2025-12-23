@@ -1,5 +1,6 @@
 package com.yuanchik.calculator;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,11 +15,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    MediaPlayer mediaPlayer;
     String operator;
     String oldNumber;
     private boolean isNewCalculation = true;
     boolean isNew = true;
     EditText editText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.fax);
         editText = findViewById(R.id.editText);
 
         int[] buttonIds = {
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickNumber(View view) {
+        mediaPlayer.start();
 
         if (isNew)
             editText.setText("");
@@ -117,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void operations(View view) {
+        mediaPlayer.start();
 
         isNew = true;
         isNewCalculation = false;
@@ -135,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickEqual(View view) {
+        mediaPlayer.start();
         String newNumber = editText.getText().toString();
         double result = 0.0;
 
@@ -168,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickPercent(View view) {
+        mediaPlayer.start();
         try {
             double currentValue = Double.parseDouble(editText.getText().toString());
 
@@ -215,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBackspaceClick(View view) {
+        mediaPlayer.start();
         String currentText = editText.getText().toString();
 
         // Если строка пустая или показывает "ERROR" — ничего не делаем
