@@ -36,7 +36,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#447DF9FF"
+        android:background="#C77DF9FF"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
 
